@@ -103,10 +103,13 @@ def checkJobsBuildStatus():
 
     if success > 0 and unstable == 0 and failed == 0:
         setstatus('SUCCESS')
+        print("[Info] Success")
     if unstable > 0 and failed == 0:
         setstatus('UNSTABLE')
+        print("[INFO] Unstable")
     if failed > 0:
         setstatus('FAILURE')
+        print("[INFO] Failure")
 
 
 def checkJobsBuilding():
