@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import sys
 import RPi.GPIO as GPIO
 import time
 import threading
@@ -8,6 +8,7 @@ import config as cfg
 import signal
 from jenkinsapi.jenkins import Jenkins
 from requests.exceptions import ConnectionError
+
 
 # Set the GPIO mode.
 GPIO.setmode(GPIO.BCM)
@@ -104,12 +105,15 @@ def checkJobsBuildStatus():
     if success > 0 and unstable == 0 and failed == 0:
         setstatus('SUCCESS')
         print("[Info] Success")
+        sys.stderr.write('[INFO] Success\n')
     if unstable > 0 and failed == 0:
         setstatus('UNSTABLE')
         print("[INFO] Unstable")
+        sys.stderr.write('[INFO] Unstable\n')
     if failed > 0:
         setstatus('FAILURE')
         print("[INFO] Failure")
+        sys.stderr.write('[INFO] Failure\n')
 
 
 def checkJobsBuilding():
