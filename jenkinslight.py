@@ -75,7 +75,7 @@ def setError(value):
         error = value
     else:
         error = True
-        print "[ERROR] Only supply True or False to the setError function"
+        print("[ERROR] Only supply True or False to the setError function")
 
 
 def checkJobsBuildStatus():
@@ -146,12 +146,12 @@ try:
     J = Jenkins(cfg.jenkinsurl, username=cfg.username, password=cfg.password)
 except jenkinsapi.custom_exceptions.JenkinsAPIException:
     setError(True)
-    print "[ERROR] Jenkins authentication error!"
+    print("[ERROR] Jenkins authentication error!")
 except ConnectionError:
     setError(True)
-    print "[ERROR] Jenkins connection error!"
+    print("[ERROR] Jenkins connection error!")
 else:
-    print "[INFO] No Jenkins error!"
+    print("[INFO] No Jenkins error!")
     setError(False)
     # Get the status of the latest build before starting the threads
     checkJobsBuildStatus()
@@ -199,9 +199,8 @@ def main():
         try:
             time.sleep(1)
         except KeyboardInterrupt:
-            print "[NOTICE] Jenkins Light terminated!"
+            print("[NOTICE] Jenkins Light terminated!")
             alloff()
             keepalive = False
-
 
 main()
