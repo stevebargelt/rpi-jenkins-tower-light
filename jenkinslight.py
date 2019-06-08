@@ -60,10 +60,8 @@ def setstatus(status):
         alloff()
         if status == "SUCCESS":
             GPIO.output(getcode('green'), True)
-
         if status == "UNSTABLE":
             GPIO.output(getcode('yellow'), True)
-
         if status == "FAILURE":
             GPIO.output(getcode('red'), True)
     return
@@ -138,7 +136,7 @@ def checkJobsBuilding():
 alloff()
 
 # Toggle everything once
-# toggle(getcode('buzzer'), .1)
+toggle(getcode('buzzer'), .1)
 toggle(getcode('red'), .2)
 toggle(getcode('yellow'), .2)
 toggle(getcode('green'), .2)
